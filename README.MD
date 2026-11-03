@@ -22,6 +22,8 @@
 Требования и состояние реализации: [agents/REQUIREMENTS.MD](agents/REQUIREMENTS.MD).
 Инструкции для разработки: [AGENTS.MD](AGENTS.MD) → [agents/AGENTS.MD](agents/AGENTS.MD).
 
+Проект был размещен на Vercel: https://run-forge-test.vercel.app
+
 ## Стек
 
 React 19, Vite 8, TypeScript 6, HTML, CSS Modules. Vitest и React Testing Library используются для тестов.
