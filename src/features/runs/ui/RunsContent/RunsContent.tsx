@@ -1,5 +1,5 @@
-import type { Run } from '../../entities/run/types';
-import { RunList } from './RunList';
+import type { Run } from '../../../../entities/run/types';
+import { RunList } from '../RunList/RunList';
 import styles from './RunsContent.module.css';
 
 type RunsContentProps = {

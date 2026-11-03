@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef } from 'react';
-import { StatusBadge } from '../../components/StatusBadge/StatusBadge';
-import type { Run } from '../../entities/run/types';
-import { formatDate, formatDuration } from '../../utils/format';
+import { StatusBadge } from '../../../../components/StatusBadge/StatusBadge';
+import type { Run } from '../../../../entities/run/types';
+import { formatDate, formatDuration } from '../../../../utils/format';
 import styles from './RunDetailsModal.module.css';
 
 type RunDetailsModalProps = { run: Run; onClose: () => void };
@@ -31,6 +31,19 @@ export function RunDetailsModal({ run, onClose }: RunDetailsModalProps) {
       ref={dialogRef}
       className={styles.dialog}
       aria-labelledby={titleId}
+      onClick={(event) => {
+        if (event.target !== event.currentTarget) return;
+
+        // Backdrop clicks target the dialog too; its padding remains inside.
+        const bounds = event.currentTarget.getBoundingClientRect();
+        const isOutside =
+          event.clientX < bounds.left ||
+          event.clientX > bounds.right ||
+          event.clientY < bounds.top ||
+          event.clientY > bounds.bottom;
+
+        if (isOutside) onClose();
+      }}
       onCancel={(event) => {
         event.preventDefault();
         onClose();

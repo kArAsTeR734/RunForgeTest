@@ -1,45 +1,37 @@
 import { useState } from 'react';
 import type { Run } from '../../entities/run/types';
 import { useRuns } from '../../hooks/useRuns';
-import { RunDetailsModal } from './RunDetailsModal';
-import { RunFilters } from './RunFilters';
-import type { RunStatusFilter } from './RunFilters';
-import { RunsContent } from './RunsContent';
-import { RunsHeader } from './RunsHeader';
+import { useRunFilters } from '../../hooks/useRunFilters';
+import { selectRuns } from '../../utils/runFilters';
+import { RunDetailsModal } from './ui/RunDetailsModal/RunDetailsModal';
+import { RunFilters } from './ui/RunFilters/RunFilters';
+import { RunsContent } from './ui/RunsContent/RunsContent';
+import { RunsHeader } from './ui/RunsHeader/RunsHeader';
 import styles from './RunsPage.module.css';
 
 export function RunsPage() {
   const { data: runs, error, status, isLoading, isSuccess, reload } = useRuns();
-  const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState<RunStatusFilter>('all');
+  const { filters, setSearch, setStatus, setSort, resetFilters } = useRunFilters();
   const [selectedRun, setSelectedRun] = useState<Run | null>(null);
-  const query = search.trim().toLowerCase();
-  const filteredRuns = runs.filter(
-    (run) =>
-      (statusFilter === 'all' || run.status === statusFilter) &&
-      (run.name.toLowerCase().includes(query) || run.repository.toLowerCase().includes(query)),
-  );
-
-  function resetFilters() {
-    setSearch('');
-    setStatusFilter('all');
-  }
+  const filteredRuns = selectRuns(runs, filters);
 
   return (
     <main className={styles.main}>
       <RunsHeader isLoading={isLoading} onRefresh={() => void reload()} />
       <RunFilters
-        search={search}
-        status={statusFilter}
+        search={filters.search}
+        status={filters.status}
+        sort={filters.sort}
         resultCount={isSuccess ? filteredRuns.length : null}
         onSearchChange={setSearch}
-        onStatusChange={setStatusFilter}
+        onStatusChange={setStatus}
+        onSortChange={setSort}
       />
       <RunsContent
         status={status}
         error={error}
         runs={filteredRuns}
-        hasFilters={query !== '' || statusFilter !== 'all'}
+        hasFilters={filters.search.trim() !== '' || filters.status !== 'all'}
         onRetry={() => void reload()}
         onReset={resetFilters}
         onSelect={setSelectedRun}

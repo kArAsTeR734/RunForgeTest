@@ -13,7 +13,7 @@ describe('getRuns', () => {
     expect(resolved).not.toHaveBeenCalled();
     await vi.advanceTimersByTimeAsync(1);
     const runs = await request;
-    expect(runs.length).toBeGreaterThanOrEqual(6);
+    expect(runs).toHaveLength(10);
     expect(new Set(runs.map((run) => run.status))).toEqual(
       new Set(['queued', 'running', 'succeeded', 'failed']),
     );
@@ -32,7 +32,7 @@ describe('getRuns', () => {
     await failure;
     const retry = getRuns();
     await vi.runAllTimersAsync();
-    expect((await retry).length).toBeGreaterThanOrEqual(6);
+    expect(await retry).toHaveLength(10);
   });
 
   it('cancels an active request', async () => {

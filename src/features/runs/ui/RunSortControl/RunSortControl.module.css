@@ -1,0 +1,18 @@
+.control {
+  display: grid;
+  gap: 8px;
+}
+.control label {
+  font-size: 13px;
+  font-weight: 600;
+}
+.control select {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fffdf9;
+  color: #10223d;
+  font: inherit;
+}

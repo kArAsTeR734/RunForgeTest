@@ -1,8 +1,7 @@
 import { useId } from 'react';
-import type { RunStatus } from '../../entities/run/types';
+import type { RunSort, RunStatusFilter } from '../../../../entities/run/filterTypes';
+import { RunSortControl } from '../RunSortControl/RunSortControl';
 import styles from './RunFilters.module.css';
-
-export type RunStatusFilter = RunStatus | 'all';
 
 const statusOptions: { value: RunStatusFilter; label: string }[] = [
   { value: 'all', label: 'All' },
@@ -15,44 +14,54 @@ const statusOptions: { value: RunStatusFilter; label: string }[] = [
 type RunFiltersProps = {
   search: string;
   status: RunStatusFilter;
+  sort: RunSort;
   resultCount: number | null;
   onSearchChange: (value: string) => void;
   onStatusChange: (value: RunStatusFilter) => void;
+  onSortChange: (value: RunSort) => void;
 };
 
 export function RunFilters({
   search,
   status,
+  sort,
   resultCount,
   onSearchChange,
   onStatusChange,
+  onSortChange,
 }: RunFiltersProps) {
   const searchId = useId();
+  const statusId = useId();
 
   return (
     <div className={styles.filters}>
-      <div className={styles.search}>
-        <label htmlFor={searchId}>Поиск запусков</label>
-        <input
-          id={searchId}
-          type="search"
-          placeholder="Название запуска или репозиторий"
-          value={search}
-          onChange={(event) => onSearchChange(event.target.value)}
-        />
+      <div className={styles.toolbar}>
+        <div className={styles.search}>
+          <label htmlFor={searchId}>Поиск запусков</label>
+          <input
+            id={searchId}
+            type="search"
+            placeholder="Название запуска или репозиторий"
+            value={search}
+            onChange={(event) => onSearchChange(event.target.value)}
+          />
+        </div>
+        <RunSortControl value={sort} onChange={onSortChange} />
       </div>
       <fieldset className={styles.statuses}>
         <legend>Статус</legend>
         <div className={styles.options}>
           {statusOptions.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              aria-pressed={status === option.value}
-              onClick={() => onStatusChange(option.value)}
-            >
-              {option.label}
-            </button>
+            <label className={styles.option} key={option.value}>
+              <input
+                type="radio"
+                name={statusId}
+                value={option.value}
+                checked={status === option.value}
+                onChange={() => onStatusChange(option.value)}
+              />
+              <span>{option.label}</span>
+            </label>
           ))}
         </div>
       </fieldset>
