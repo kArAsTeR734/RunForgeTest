@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import type { RunSort } from '../../../../entities/run/filterTypes';
+import type { RunSort } from '../../../../entities/run/module/filterTypes';
 import styles from './RunSortControl.module.css';
 
 const sortOptions: { value: RunSort; label: string }[] = [

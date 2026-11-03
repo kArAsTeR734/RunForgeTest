@@ -1,5 +1,5 @@
-import type { RunFiltersState, RunSort, RunStatusFilter } from '../entities/run/filterTypes';
-import type { Run } from '../entities/run/types';
+import type { RunFiltersState, RunSort, RunStatusFilter } from '../entities/run/module/filterTypes';
+import type { Run } from '../entities/run/module/types';
 
 function parseStatus(value: string | null): RunStatusFilter {
   return value === 'queued' || value === 'running' || value === 'succeeded' || value === 'failed'

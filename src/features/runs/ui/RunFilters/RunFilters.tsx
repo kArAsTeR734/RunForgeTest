@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import type { RunSort, RunStatusFilter } from '../../../../entities/run/filterTypes';
+import type { RunSort, RunStatusFilter } from '../../../../entities/run/module/filterTypes';
 import { RunSortControl } from '../RunSortControl/RunSortControl';
 import styles from './RunFilters.module.css';
 

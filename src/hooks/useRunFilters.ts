@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { RunFiltersState, RunSort, RunStatusFilter } from '../entities/run/filterTypes';
+import type { RunFiltersState, RunSort, RunStatusFilter } from '../entities/run/module/filterTypes';
 import { readRunFilters, writeRunFilters } from '../utils/runFilters';
 
 function readLocation(): RunFiltersState {

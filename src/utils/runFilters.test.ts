@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { RunFiltersState, RunSort } from '../entities/run/filterTypes';
-import type { Run } from '../entities/run/types';
+import type { RunFiltersState, RunSort } from '../entities/run/module/filterTypes';
+import type { Run } from '../entities/run/module/types';
 import { readRunFilters, selectRuns, writeRunFilters } from './runFilters';
 
 const defaults: RunFiltersState = { search: '', status: 'all', sort: 'date-desc' };

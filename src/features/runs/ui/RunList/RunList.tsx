@@ -1,5 +1,5 @@
 import { StatusBadge } from '../../../../components/StatusBadge/StatusBadge';
-import type { Run } from '../../../../entities/run/types';
+import type { Run } from '../../../../entities/run/module/types';
 import { formatDate, formatDuration } from '../../../../utils/format';
 import styles from './RunList.module.css';
 

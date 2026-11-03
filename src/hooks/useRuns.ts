@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getRuns } from '../entities/run/runService';
-import type { Run } from '../entities/run/types';
+import type { Run } from '../entities/run/module/types';
 
 type RunsQueryState =
   | { status: 'loading'; data: Run[]; error: null }

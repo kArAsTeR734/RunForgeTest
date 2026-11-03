@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Run } from '../../entities/run/types';
+import type { Run } from '../../entities/run/module/types';
 import { useRuns } from '../../hooks/useRuns';
 import { useRunFilters } from '../../hooks/useRunFilters';
 import { selectRuns } from '../../utils/runFilters';

@@ -1,5 +1,5 @@
-import { mockRuns } from './mockData';
-import type { Run } from './types';
+import { mockRuns } from './module/mockData';
+import type { Run } from './module/types';
 
 export type RunRequestOptions = {
   signal?: AbortSignal;

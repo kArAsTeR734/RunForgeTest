@@ -1,4 +1,4 @@
-import type { RunStatus } from '../../entities/run/types';
+import type { RunStatus } from '../../entities/run/module/types';
 import styles from './StatusBadge.module.css';
 
 const labels: Record<RunStatus, string> = {

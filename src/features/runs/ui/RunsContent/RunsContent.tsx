@@ -1,4 +1,4 @@
-import type { Run } from '../../../../entities/run/types';
+import type { Run } from '../../../../entities/run/module/types';
 import { RunList } from '../RunList/RunList';
 import styles from './RunsContent.module.css';
 
