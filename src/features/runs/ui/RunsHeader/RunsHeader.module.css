@@ -1,0 +1,27 @@
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.heading h1 {
+  margin: 8px 0 0;
+  font-size: 48px;
+  letter-spacing: -2px;
+}
+.eyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+.description {
+  margin: 16px 0 32px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+@media (max-width: 700px) {
+  .heading h1 {
+    font-size: 40px;
+  }
+}

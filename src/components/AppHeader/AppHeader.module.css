@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 100px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  color: #10223d;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+
+.brand span {
+  color: #627b9b;
+}
+
+.workspace {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    min-height: 80px;
+  }
+  .workspace {
+    font-size: 9px;
+  }
+}

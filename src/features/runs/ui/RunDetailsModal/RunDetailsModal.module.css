@@ -1,0 +1,92 @@
+.dialog {
+  width: min(720px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fffdf9;
+  color: #10223d;
+  overflow-y: auto;
+  box-shadow: 0 24px 100px #10223d33;
+}
+.dialog::backdrop {
+  background: #10223d99;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.header > div {
+  min-width: 0;
+}
+.header h2 {
+  margin: 8px 0 0;
+  font-size: 26px;
+  overflow-wrap: anywhere;
+}
+.header button {
+  flex-shrink: 0;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.metadata {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 24px 0;
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+}
+.metadata dt {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.metadata dd {
+  margin: 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.section {
+  margin-top: 24px;
+}
+.section h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+.logs {
+  padding: 20px;
+  border-radius: 8px;
+  background: #10223d;
+  color: #f7f6f2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+  font-size: 12px;
+}
+.result {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+@media (max-width: 500px) {
+  .dialog {
+    padding: 20px 16px;
+  }
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .metadata {
+    grid-template-columns: 1fr;
+  }
+}
